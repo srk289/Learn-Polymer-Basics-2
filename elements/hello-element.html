@@ -2,12 +2,14 @@
 
 <dom-module id="hello-element">
 	<template>
-		hello world
+		<content select="h1"></content>
+		<hr>
+		<content select="ul"></content>
 	</template>
 </dom-module>
 
 <script>
 	Polymer({
-		is: 'hello-element' 
+		is: 'hello-element'
 	})
 </script>
