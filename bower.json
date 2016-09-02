@@ -1,0 +1,20 @@
+{
+  "name": "Learn Polymer Basics 2",
+  "homepage": "https://github.com/srk289/Learn-Polymer-Basics-2",
+  "authors": [
+    "Srikanth Kondaparthy <srk289@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.6.1"
+  }
+}
