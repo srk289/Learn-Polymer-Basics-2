@@ -1,8 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <dom-module id="hello-element">
+
 	<template>
-		<content select="h1"></content>
+		<h1><content select=".headingText"></content></h1>
 		<hr>
 		<content select="ul"></content>
 	</template>
@@ -11,5 +12,5 @@
 <script>
 	Polymer({
 		is: 'hello-element'
-	})
+	});
 </script>
