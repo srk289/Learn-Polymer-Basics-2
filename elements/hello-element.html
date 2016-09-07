@@ -11,6 +11,10 @@
 
 <script>
 	Polymer({
-		is: 'hello-element'
+		is: 'hello-element',
+		attached: function(){
+			console.log('this is using shady dom selector Polymer.dom(this.root).children) ', Polymer.dom(this.root).children);
+			console.log('this is using document queryselector document.querySelector(\'hello-element\').children) ', document.querySelector('hello-element').children);
+		}
 	});
 </script>
