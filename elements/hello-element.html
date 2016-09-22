@@ -1,9 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-datepicker/app-datepicker-dialog.html">
+
 
 <dom-module id="hello-element">
 
 	<template>
 		<!-- Local DOM -->
+		<app-datepicker-dialog></app-datepicker-dialog>
+
 		      <h2 id="alertHead"></h2>
 		      <ul class="alert-list-inner">
 		        <li>Alert 1</li>
@@ -11,43 +15,48 @@
 		        <li>Alert 3</li>
 		      </ul>
 		      <content></content>
+		      <template id="test" is="dom-repeat" items="{{items}}">
+		      	<template is="dom-if" if={{item.show}}>
+		      		<h3 id="{{item.id}}">{{item.text}}</h3>
+      			</template>
+		      </template>
 	</template>
 </dom-module>
 
 <script>
 	Polymer({
 		is: 'hello-element',
-		ready: function (){
-			// console.log(this.)
-			console.log("this", this);
-			          console.log("this.root", this.root);
-			          console.log("this.$", this.$);
-			          console.log(Polymer.dom(this).children); 
-			          
-			          var lightDomDiv = document.querySelector("hello-element").querySelector(".alert-list");
-			          console.log("lightDomDiv", lightDomDiv);
+		properties: {
+			items: {
+				type: Array,
+				value: [
+					{
+						text: 'hi',
+						show: true
+						//id: 'one'
+					},
+					{
+						text: 'hello',
+						show: false
+						//id: 'two'
+					}
+				]
+			},
 
-			          //Because retrieving the children of a given content tag is a common pattern, 
-			          //the element API includes getContentChildNodes and getContentChildren utility methods
-			          var contentChildren = this.getContentChildren('content')[0];
-			          console.log("contentChildren", contentChildren);
+		},
 
-			          //Returns a list of effective child nodes for this element.
-			          var effectiveChildrenNodes = Polymer.dom(this).getEffectiveChildNodes();
-			          console.log("effectiveChildrenNodes", effectiveChildrenNodes);
+		ready: function() {
+			this.async(function(){
+				el = this.$$('h3');
+				console.log(el);
+			})
+		},
 
-			          //Returns a list of effective child elements for this element.
-			          var effectiveChildren = this.getEffectiveChildren();
-			          console.log("effectiveChildren", effectiveChildren);
-
-			          //getDestinationInsertionPoints only returns useful results when called on an element that’s being distributed.
-			          var insertedTo = Polymer.dom(lightDomDiv).getDestinationInsertionPoints()[0];
-			          console.log("insertedTo", insertedTo);
-			          
-			          var insertionPoint = Polymer.dom(this.root).querySelector('content');
-			          //Note that getDistributedNodes only returns useful results when called on a <content> element, and
-			          var distributed = Polymer.dom(insertionPoint).getDistributedNodes()[0];
-			          console.log("distributed", distributed);
+		attached: function(){
+			this.async(function(){
+				el = this.$$('h3#one');
+				console.log(el);
+			})
 		}
 	});
 </script>
